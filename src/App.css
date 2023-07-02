@@ -1,0 +1,62 @@
+body {
+  font-family: "Merriweather", "Times New Roman", Times, serif;
+}
+
+h1 {
+  text-align: center;
+  font-weight: bold;
+  margin: 1em;
+}
+
+input {
+  border-width: 1px;
+  border-style: solid;
+  border-color: darkgrey;
+  border-radius: 10000px;
+  padding: 0.4em 0.5em;
+  font-size: 1em;
+}
+
+input:hover {
+  border-color: rgb(112, 112, 112);
+}
+
+input:focus-visible {
+  outline: rgb(146, 32, 32) 2px solid;
+  border-color: rgb(146, 32, 32);
+}
+
+input:invalid {
+  border-color: red;
+  outline: red 2px solid;
+}
+
+.fields-container {
+  max-width: 600px;
+  margin: auto;
+}
+
+.field-container {
+  display: flex;
+  margin-bottom: 1rem;
+}
+
+.field-label {
+  /* width: 50%; */
+  flex-grow: 1;
+}
+
+@media screen and (max-width: 768px) {
+  .field-container {
+    flex-flow: column;
+    margin: 0 1.3em;
+  }
+
+  .field-input input {
+    width: 100%;
+  }
+
+  .field-label {
+    margin-bottom: 0.25em;
+  }
+}
