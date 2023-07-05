@@ -39,6 +39,7 @@ input:invalid {
 .field-container {
   display: flex;
   margin-bottom: 1rem;
+  align-items: center;
 }
 
 .field-label {
@@ -50,6 +51,8 @@ input:invalid {
   .field-container {
     flex-flow: column;
     margin: 0 1.3em;
+    margin-bottom: 1em;
+    align-items: stretch;
   }
 
   .field-input input {
