@@ -64,7 +64,7 @@ export default function Field({ id, label, value, onChange, min, max }: IFieldPr
           ref={inputRef}
           aria-labelledby={labelId}
           id={id}
-          type="text"
+          type="search"
           value={value}
           autoComplete="off"
           autoCapitalize="none"
