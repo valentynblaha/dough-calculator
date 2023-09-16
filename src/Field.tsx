@@ -66,6 +66,9 @@ export default function Field({ id, label, value, onChange, min, max }: IFieldPr
           id={id}
           type="text"
           value={value}
+          autoComplete="off"
+          autoCapitalize="none"
+          inputMode="decimal"
           onChange={e => onChange(e.target.value)}
         ></input>
       </div>

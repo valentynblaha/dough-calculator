@@ -68,7 +68,7 @@ function App() {
     <>
       <div>
         <h1>Calcolatore per impasti</h1>
-        <div className="fields-container">
+        <form className="fields-container">
           {fields.map(field => (
             <Field
               key={field.name}
@@ -83,7 +83,7 @@ function App() {
               max={field.max}
             />
           ))}
-        </div>
+        </form>
       </div>
     </>
   );
