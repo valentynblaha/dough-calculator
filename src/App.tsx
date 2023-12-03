@@ -2,6 +2,7 @@ import { useState } from "react";
 import Field from "./Field";
 import "./App.css";
 import numberLocale from "./utils/format";
+import ThemeSwitch from "./ThemeSwitch";
 
 const fields = [
   {
@@ -45,47 +46,40 @@ const getVal = (obj: Record<string, string>, key: string) => {
 };
 
 function App() {
-
   const calculateValues = (v: Record<string, string>) => {
-
     const format = (val: number) => numberLocale.format(val);
-    v["starter"] = format((getVal(v, "starter-ratio") * getVal(v, "flour-total")));
-    v["flour-added"] = format((
-      getVal(v, "flour-total") -
-      getVal(v, "starter") / (1 + getVal(v, "starter-hydration"))
-    ));
-    v["water-added"] = format((
-      getVal(v, "dough-hydration") * getVal(v, "flour-total") -
-      (getVal(v, "starter") * getVal(v, "starter-hydration")) / (1 + getVal(v, "starter-hydration"))
-    ));
-    v["salt"] = format((0.025 * getVal(v, "flour-total")));
+    v["starter"] = format(getVal(v, "starter-ratio") * getVal(v, "flour-total"));
+    v["flour-added"] = format(getVal(v, "flour-total") - getVal(v, "starter") / (1 + getVal(v, "starter-hydration")));
+    v["water-added"] = format(
+      getVal(v, "dough-hydration") * getVal(v, "flour-total") - (getVal(v, "starter") * getVal(v, "starter-hydration")) / (1 + getVal(v, "starter-hydration"))
+    );
+    v["salt"] = format(0.025 * getVal(v, "flour-total"));
     return v;
-  }
+  };
 
   const [values, setValues] = useState(calculateValues(defaultValues));
 
   return (
-    <>
-      <div>
-        <h1>Calcolatore per impasti</h1>
-        <form className="fields-container">
-          {fields.map(field => (
-            <Field
-              key={field.name}
-              id={field.name}
-              value={values[field.name]}
-              label={field.label}
-              onChange={val => {
-                const v = {...values, [field.name]: val};
-                setValues(calculateValues(v))
-              }}
-              min={field.min}
-              max={field.max}
-            />
-          ))}
-        </form>
-      </div>
-    </>
+    <div>
+      <ThemeSwitch/>
+      <h1>Calcolatore per impasti</h1>
+      <form className="fields-container">
+        {fields.map((field) => (
+          <Field
+            key={field.name}
+            id={field.name}
+            value={values[field.name]}
+            label={field.label}
+            onChange={(val) => {
+              const v = { ...values, [field.name]: val };
+              setValues(calculateValues(v));
+            }}
+            min={field.min}
+            max={field.max}
+          />
+        ))}
+      </form>
+    </div>
   );
 }
 

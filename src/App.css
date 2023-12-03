@@ -1,5 +1,21 @@
 body {
+    --background-color: #ffffff;
+    --foreground-color: #000000;
+    --input-border-color: #a9a9a9;
+    --input-hover-border-color: #707070;
+    --input-focus-border-color: #922020;
     font-family: "Merriweather", "Times New Roman", Times, serif;
+    background-color: var(--background-color);
+    color: var(--foreground-color);
+}
+
+/* DARK THEME VARIABLES */
+body.dark {
+    --background-color: #2c3639;
+    --foreground-color: #dcd7c9;
+    --input-border-color: #a9a9a9;
+    --input-hover-border-color: #e7e4db;
+    --input-focus-border-color: #a27b5c;
 }
 
 h1 {
@@ -9,9 +25,12 @@ h1 {
 }
 
 input {
+    outline-offset: 0px;
     border-width: 1px;
     border-style: solid;
-    border-color: darkgrey;
+    border-color: var(--input-border-color);
+    background-color: var(--background-color);
+    color: var(--foreground-color);
     border-radius: 10000px;
     padding: 0.4em 0.5em;
     font-size: 1em;
@@ -38,12 +57,12 @@ input[type="search"]::-webkit-search-results-decoration {
 }
 
 input:hover {
-    border-color: rgb(112, 112, 112);
+    border-color: var(--input-hover-border-color);
 }
 
 input:focus-visible {
-    outline: rgb(146, 32, 32) 2px solid;
-    border-color: rgb(146, 32, 32);
+    outline: var(--input-focus-border-color) 2px solid;
+    border-color: var(--input-focus-border-color);
 }
 
 input:invalid {
@@ -67,6 +86,13 @@ input:invalid {
     flex-grow: 1;
 }
 
+.switch-container {
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: 1em;
+}
+
 @media screen and (max-width: 768px) {
     .field-container {
         flex-flow: column;
@@ -82,21 +108,13 @@ input:invalid {
     .field-label {
         margin-bottom: 0.25em;
     }
-}
 
-@media screen and (prefers-color-scheme: dark) {
-    body,
-    input {
-        background-color: #2c3639;
-        color: #dcd7c9;
-    }
-
-    input:hover {
-        border-color: #e7e4db;
-    }
-
-    input:focus-visible {
-        outline: #a27b5c 2px solid;
-        border-color: #a27b5c;
+    .switch-container {
+        position: relative;
+        top: 0;
+        right: 0;
+        margin: 1em;
+        margin-bottom: 0;
+        text-align: right;
     }
 }

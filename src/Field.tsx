@@ -10,7 +10,7 @@ export interface IFieldProps {
   max?: number;
 }
 
-export default function Field({ id, label, value, onChange, min, max }: IFieldProps) {
+export default function Field({ id, label, value, onChange, min, max }: Readonly<IFieldProps>) {
   const inputRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
