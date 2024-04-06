@@ -1,15 +1,16 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import Field from "./Field";
 import "./App.css";
 import numberLocale from "./utils/format";
 import ThemeSwitch from "./ThemeSwitch";
+import { getI18n, languages } from "./i18n";
 
 const fields = [
   {
     name: "starter-hydration",
     type: "text",
     default: 1.0,
-    label: "Idratazione lievito madre (0.0 - 1.0)",
+    label: "starterHydration",
     min: 0,
     max: 1,
   },
@@ -17,7 +18,7 @@ const fields = [
     name: "dough-hydration",
     type: "text",
     default: 0.65,
-    label: "Idratazione impasto (0.0 - 1.0)",
+    label: "doughHydration",
     min: 0,
     max: 1,
   },
@@ -25,15 +26,15 @@ const fields = [
     name: "starter-ratio",
     type: "text",
     default: 0.3,
-    label: "Percentuale lievito madre (0.0 - 1.0)",
+    label: "starterRatio",
     min: 0,
     max: 1,
   },
-  { name: "flour-total", type: "text", default: 500, label: "Quantità farina totale (g)" },
-  { name: "flour-added", type: "text", default: 0, label: "Quantità farina aggiunta (g)" },
-  { name: "water-added", type: "text", default: 0, label: "Quantità acqua aggiunta (g o ml)" },
-  { name: "starter", type: "text", default: 0, label: "Quantità lievito madre (g)" },
-  { name: "salt", type: "text", default: 0, label: "Sale (g)" },
+  { name: "flour-total", type: "text", default: 500, label: "flourTotal" },
+  { name: "flour-added", type: "text", default: 0, label: "flourAdded" },
+  { name: "water-added", type: "text", default: 0, label: "waterAdded" },
+  { name: "starter", type: "text", default: 0, label: "starter" },
+  { name: "salt", type: "text", default: 0, label: "salt" },
 ];
 
 const defaultValues: Record<string, string> = {};
@@ -58,18 +59,33 @@ function App() {
   };
 
   const [values, setValues] = useState(calculateValues(defaultValues));
+  const [language, setLanguage] = useState("it");
+  const selectRef = useRef<HTMLSelectElement>(null);
+
+  const i18n = (key: string) => getI18n(key, language);
 
   return (
     <div>
-      <ThemeSwitch/>
-      <h1>Calcolatore per impasti</h1>
+      <div className="d-flex flex-row align-items-center justify-content-end" style={{margin: "1em 1em 0 1em"}}>
+        <div className="select" style={{marginRight: "1em"}}>
+          <select onChange={e => setLanguage(e.target.value)} value={language} ref={selectRef}>
+            {Object.keys(languages).map((code) => {
+              const lang = languages[code];
+              return <option value={code} key={code}>{lang.label}</option>;
+            })}
+          </select>
+          <span className="focus"></span>
+        </div>        
+        <ThemeSwitch />
+      </div>
+      <h1>{i18n("title")}</h1>
       <form className="fields-container">
         {fields.map((field) => (
           <Field
             key={field.name}
             id={field.name}
             value={values[field.name]}
-            label={field.label}
+            label={i18n(field.label)}
             onChange={(val) => {
               const v = { ...values, [field.name]: val };
               setValues(calculateValues(v));
