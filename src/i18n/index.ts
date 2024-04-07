@@ -1,3 +1,6 @@
+import gbFlag from "../assets/gb.png";
+import itFlag from "../assets/it.png";
+import { LANG_EN } from "./en";
 import { LANG_IT } from "./it";
 
 type Language = {
@@ -9,12 +12,12 @@ type Language = {
 export const languages: Record<string, Language> = {
     "en": {
         label: "English",
-        flag: "🇬🇧",
-        dictionary: null
+        flag: gbFlag,
+        dictionary: LANG_EN
     },
     "it": {
         label: "Italiano",
-        flag: "🇮🇹",
+        flag: itFlag,
         dictionary: LANG_IT
     },
 }

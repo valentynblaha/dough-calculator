@@ -1,9 +1,10 @@
-import { useRef, useState } from "react";
-import Field from "./Field";
+import { useState } from "react";
 import "./App.css";
+import Field from "./Field";
+import LocaleSelect from "./components/LocaleSelect";
+import ThemeSwitch from "./components/ThemeSwitch";
+import { getI18n } from "./i18n";
 import numberLocale from "./utils/format";
-import ThemeSwitch from "./ThemeSwitch";
-import { getI18n, languages } from "./i18n";
 
 const fields = [
   {
@@ -50,9 +51,12 @@ function App() {
   const calculateValues = (v: Record<string, string>) => {
     const format = (val: number) => numberLocale.format(val);
     v["starter"] = format(getVal(v, "starter-ratio") * getVal(v, "flour-total"));
-    v["flour-added"] = format(getVal(v, "flour-total") - getVal(v, "starter") / (1 + getVal(v, "starter-hydration")));
+    v["flour-added"] = format(
+      getVal(v, "flour-total") - getVal(v, "starter") / (1 + getVal(v, "starter-hydration"))
+    );
     v["water-added"] = format(
-      getVal(v, "dough-hydration") * getVal(v, "flour-total") - (getVal(v, "starter") * getVal(v, "starter-hydration")) / (1 + getVal(v, "starter-hydration"))
+      getVal(v, "dough-hydration") * getVal(v, "flour-total") -
+        (getVal(v, "starter") * getVal(v, "starter-hydration")) / (1 + getVal(v, "starter-hydration"))
     );
     v["salt"] = format(0.025 * getVal(v, "flour-total"));
     return v;
@@ -60,33 +64,29 @@ function App() {
 
   const [values, setValues] = useState(calculateValues(defaultValues));
   const [language, setLanguage] = useState("it");
-  const selectRef = useRef<HTMLSelectElement>(null);
 
   const i18n = (key: string) => getI18n(key, language);
 
   return (
     <div>
-      <div className="d-flex flex-row align-items-center justify-content-end" style={{margin: "1em 1em 0 1em"}}>
-        <div className="select" style={{marginRight: "1em"}}>
-          <select onChange={e => setLanguage(e.target.value)} value={language} ref={selectRef}>
-            {Object.keys(languages).map((code) => {
-              const lang = languages[code];
-              return <option value={code} key={code}>{lang.label}</option>;
-            })}
-          </select>
-          <span className="focus"></span>
-        </div>        
+      <div
+        className="d-flex flex-row align-items-center justify-content-end"
+        style={{ margin: "1em 1em 0 1em" }}
+      >
+        <div className="select" style={{ marginRight: "1em" }}>
+          <LocaleSelect onChange={value => setLanguage(value)} value={language} />
+        </div>
         <ThemeSwitch />
       </div>
       <h1>{i18n("title")}</h1>
       <form className="fields-container">
-        {fields.map((field) => (
+        {fields.map(field => (
           <Field
             key={field.name}
             id={field.name}
             value={values[field.name]}
             label={i18n(field.label)}
-            onChange={(val) => {
+            onChange={val => {
               const v = { ...values, [field.name]: val };
               setValues(calculateValues(v));
             }}

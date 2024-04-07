@@ -1,4 +1,4 @@
-import { useColorScheme } from "./hooks/useColorScheme";
+import { useColorScheme } from "../hooks/useColorScheme";
 import { DarkModeSwitch } from "react-toggle-dark-mode";
 
 export default function ThemeSwitch() {

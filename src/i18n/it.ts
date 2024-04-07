@@ -1,4 +1,3 @@
-
 export const LANG_IT = {
     "title": "Calcolatrice per impasti",
     "starterHydration": "Idratazione lievito madre (0.0 - 1.0)",

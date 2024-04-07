@@ -1,0 +1,17 @@
+.locale-select {
+    appearance: none;
+    display: block;
+    height: 2rem;
+    width: 2rem;
+    border-radius: 100000px;
+    border: none;
+    color: transparent;
+}
+
+.locale-select:focus-visible {
+    outline: 2px solid var(--input-focus-border-color);
+}
+
+option {
+    color: black;
+}
