@@ -1,4 +1,3 @@
-import React from "react";
 import "./LocaleSelect.css";
 import { languages } from "../i18n";
 

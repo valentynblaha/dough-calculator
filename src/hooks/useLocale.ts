@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { getI18n, languages } from "../i18n";
 
 export default function useLocale() {
