@@ -1,5 +1,5 @@
-import gbFlag from "../assets/gb.png";
-import itFlag from "../assets/it.png";
+import gbFlag from "../assets/gb.svg";
+import itFlag from "../assets/it.svg";
 import { LANG_EN } from "./en";
 import { LANG_IT } from "./it";
 
