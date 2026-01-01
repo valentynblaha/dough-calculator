@@ -1,3 +1,4 @@
+import { getBaseUrl } from "../utils/url";
 import { LANG_EN } from "./en";
 import { LANG_IT } from "./it";
 
@@ -10,12 +11,12 @@ type Language = {
 export const languages: Record<string, Language> = {
     "en": {
         label: "English",
-        flag: "/gb.svg",
+        flag: getBaseUrl() + "/gb.svg",
         dictionary: LANG_EN
     },
     "it": {
         label: "Italiano",
-        flag: "/it.svg",
+        flag: getBaseUrl() + "/it.svg",
         dictionary: LANG_IT
     },
 }
