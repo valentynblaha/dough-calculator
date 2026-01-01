@@ -1,5 +1,6 @@
+"use client";
 import { useEffect, useRef } from "react";
-import { setInputFilter } from "./utils/customValidity";
+import { setInputFilter } from "@/app/utils/customValidity";
 
 export interface IFieldProps {
   id: string;
@@ -24,32 +25,30 @@ export default function Field({ id, label, value, onChange, min, max }: Readonly
   }, [inputRef]);
 
   useEffect(() => {
-    
     if (typeof min === "number") {
       setInputFilter(
         inputRef.current,
         value => {
           const n = Number.parseFloat(value);
-          return !isNaN(n) && n >= min;
+          return !Number.isNaN(n) && n >= min;
         },
         "Il valore deve essere maggiore o uguale a " + min
       );
     }
-  }, [inputRef, min])
+  }, [inputRef, min]);
 
   useEffect(() => {
-    
     if (typeof max === "number") {
       setInputFilter(
         inputRef.current,
         value => {
           const n = Number.parseFloat(value);
-          return !isNaN(n) && n <= max;
+          return !Number.isNaN(n) && n <= max;
         },
         "Il valore deve essere minore o uguale a " + max
       );
     }
-  }, [inputRef, max])
+  }, [inputRef, max]);
 
   const labelId = id + "-label";
   return (

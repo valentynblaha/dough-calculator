@@ -1,7 +1,8 @@
+"use client"
 import { useEffect, useMemo, useState } from "react";
 
 export function useColorScheme() {
-  const systemPrefersDark = Boolean(window.matchMedia?.('(prefers-color-scheme: dark)').matches);
+  const systemPrefersDark = Boolean(globalThis.matchMedia?.('(prefers-color-scheme: dark)').matches);
 
   const [isDark, setIsDark] = useState(systemPrefersDark);
   const value = useMemo(
