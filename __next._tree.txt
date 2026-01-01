@@ -1,4 +1,4 @@
 :HL["/dough-calculator/_next/static/chunks/8384b6d77ccfc6e1.css","style"]
 :HL["/dough-calculator/_next/static/media/248e1dc0efc99276-s.p.8a6b2436.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
 :HL["/dough-calculator/_next/static/chunks/6ffa581894a703e9.css","style"]
-0:{"buildId":"fQYMYnCAcVABfq6cH1kdq","tree":{"name":"","paramType":null,"paramKey":"","hasRuntimePrefetch":false,"slots":{"children":{"name":"__PAGE__","paramType":null,"paramKey":"__PAGE__","hasRuntimePrefetch":false,"slots":null,"isRootLayout":false}},"isRootLayout":true},"staleTime":300}
+0:{"buildId":"xWHegXpUPqYrxW_p7qT5j","tree":{"name":"","paramType":null,"paramKey":"","hasRuntimePrefetch":false,"slots":{"children":{"name":"__PAGE__","paramType":null,"paramKey":"__PAGE__","hasRuntimePrefetch":false,"slots":null,"isRootLayout":false}},"isRootLayout":true},"staleTime":300}
