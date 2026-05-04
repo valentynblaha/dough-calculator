@@ -4,7 +4,7 @@
 6:I[97367,["/dough-calculator/_next/static/chunks/4fd93823156e59e8.js"],"OutletBoundary"]
 7:"$Sreact.suspense"
 :HL["/dough-calculator/_next/static/chunks/6ffa581894a703e9.css","style"]
-0:{"buildId":"xWHegXpUPqYrxW_p7qT5j","rsc":["$","$1","c",{"children":[["$","$L2",null,{"Component":"$3","serverProvidedParams":{"searchParams":{},"params":{},"promises":["$@4","$@5"]}}],[["$","link","0",{"rel":"stylesheet","href":"/dough-calculator/_next/static/chunks/6ffa581894a703e9.css","precedence":"next"}],["$","script","script-0",{"src":"/dough-calculator/_next/static/chunks/93aac6ad536350e4.js","async":true}]],["$","$L6",null,{"children":["$","$7",null,{"name":"Next.MetadataOutlet","children":"$@8"}]}]]}],"loading":null,"isPartial":false}
+0:{"buildId":"awS2fo425luVyBkp1ATPd","rsc":["$","$1","c",{"children":[["$","$L2",null,{"Component":"$3","serverProvidedParams":{"searchParams":{},"params":{},"promises":["$@4","$@5"]}}],[["$","link","0",{"rel":"stylesheet","href":"/dough-calculator/_next/static/chunks/6ffa581894a703e9.css","precedence":"next"}],["$","script","script-0",{"src":"/dough-calculator/_next/static/chunks/93aac6ad536350e4.js","async":true}]],["$","$L6",null,{"children":["$","$7",null,{"name":"Next.MetadataOutlet","children":"$@8"}]}]]}],"loading":null,"isPartial":false}
 4:{}
 5:"$0:rsc:props:children:0:props:serverProvidedParams:params"
 8:null
